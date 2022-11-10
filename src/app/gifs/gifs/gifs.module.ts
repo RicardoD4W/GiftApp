@@ -14,6 +14,9 @@ import { ShowResultsComponent } from './show-results/show-results.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    MainPageComponent
   ]
 })
 export class GifsModule { }

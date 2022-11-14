@@ -2,6 +2,6 @@
     <p class="font-semibold text-2xl">Buscar</p>
 
     <p>
-        <input class="mt-1 border rounded text-lg w-[90%] p-2" type="text" placeholder=" Búsqueda de Gifs...">
+        <input (keydown.enter)="busqueda(texto.value)" #texto class="mt-1 border rounded text-lg w-[90%] p-2" type="text" placeholder=" Búsqueda de Gifs...">
     </p>
 </div>

@@ -20,7 +20,7 @@ export class GifsService {
     let busq = busqueda.toLocaleUpperCase();
 
     if(busqueda !== ''){
-      if(this.getBusquedas().length > 10){
+      if(this.getBusquedas().length > 10 && !this.getBusquedas().includes(busq)){
           this.getBusquedas().pop();
           this.busquedasRealizadas.unshift(busq);
         }else{

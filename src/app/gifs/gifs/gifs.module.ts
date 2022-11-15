@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search/search.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ShowResultsComponent } from './show-results/show-results.component';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 
 
@@ -13,7 +14,8 @@ import { ShowResultsComponent } from './show-results/show-results.component';
     ShowResultsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   exports: [
     MainPageComponent

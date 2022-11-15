@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Datum } from './interface/interface';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -54,7 +56,8 @@ export class GifsService {
 
   peticion = async (busqueda : string, limite : string = '10')=>{
     try {
-      const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${this.API_KEY}&q=${busqueda}&limit=${limite}`, {
+        
+        const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${this.API_KEY}&q=${busqueda}&limit=${limite}`, {
         method: 'GET',
         headers: {}
       });

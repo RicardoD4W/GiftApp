@@ -1,4 +1,6 @@
-<app-loading></app-loading>
+<div class="loading flex justify-center items-center" *ngIf="loading">
+    <img class="animate-spin w-52" src="../../../../assets/spinner.png" alt="loading">
+</div>
 
 <div class="mt-5">
     <p class="w-[90%] ml-5" class="inline-block mx-3 my-3" *ngFor="let item of gifs"> 

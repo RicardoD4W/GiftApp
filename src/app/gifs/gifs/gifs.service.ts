@@ -9,6 +9,16 @@ import { Datum } from './interface/interface';
 })
 export class GifsService {
 
+  loading : boolean = false;
+  
+
+  getState(){
+    return this.loading;
+  }
+
+
+
+
   constructor(private HttpClient : HttpClient) { 
     if(localStorage.getItem('Gif')){
         this.busquedasRealizadas =  JSON.parse(localStorage.getItem('Gif')!) || [];
@@ -59,10 +69,15 @@ export class GifsService {
   
 
   peticion(busqueda : string, limite : string = '10'){
+    this.loading = true;
     this.HttpClient.get(`https://api.giphy.com/v1/gifs/search?api_key=${this.API_KEY}&q=${busqueda}&limit=${limite}`)
     .subscribe((response : any)=>{
-        this.gifs = response.data;
+        setTimeout(() => {
+          this.gifs = response.data;
+        }, 500);
   }); 
+  setTimeout(()=>{  this.loading = false;
+  },1000);
   }
 
 

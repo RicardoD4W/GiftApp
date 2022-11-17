@@ -19,6 +19,10 @@ export class ShowResultsComponent implements OnInit {
     console.log("🚀 ~ file: show-results.component.ts ~ line 18 ~ ShowResultsComponent ~ getgifs ~ this.gifsService.getGifs()", this.gifsService.getGifs())
   }
 
+  get loading(){
+    return this.gifsService.getState();
+  }
+
 
 
 }

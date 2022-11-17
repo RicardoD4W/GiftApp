@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Datum } from './interface/interface';
 
@@ -8,7 +9,11 @@ import { Datum } from './interface/interface';
 })
 export class GifsService {
 
-  constructor() { }
+  constructor(private HttpClient : HttpClient) { 
+    if(localStorage.getItem('Gif')){
+        this.busquedasRealizadas =  JSON.parse(localStorage.getItem('Gif')!) || [];
+    }
+  }
 
   private API_KEY : string = 'hXOKPK2TYHBfgjrwL60pCjwjgo0G0f45';
 
@@ -39,6 +44,7 @@ export class GifsService {
             console.log('Repetida');
           }else{        
           this.busquedasRealizadas.unshift(busq);
+          localStorage.setItem('Gif', JSON.stringify(this.busquedasRealizadas));
           }
         }  
           }else{
@@ -52,27 +58,37 @@ export class GifsService {
   }
   
 
+  peticion(busqueda : string, limite : string = '10'){
+    this.HttpClient.get(`https://api.giphy.com/v1/gifs/search?api_key=${this.API_KEY}&q=${busqueda}&limit=${limite}`)
+    .subscribe((response : any)=>{
+        this.gifs = response.data;
+  }); 
+  }
 
 
-  peticion = async (busqueda : string, limite : string = '10')=>{
-    try {
+
+
+  // peticion = async (busqueda : string, limite : string = '10')=>{
+  //   try {
         
-        const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${this.API_KEY}&q=${busqueda}&limit=${limite}`, {
-        method: 'GET',
-        headers: {}
-      });
+  //       const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${this.API_KEY}&q=${busqueda}&limit=${limite}`, {
+  //       method: 'GET',
+  //       headers: {}
+  //     });
     
 
 
-      if (response.ok) {
-        const result = await response.json();
-        this.gifs = result.data;
-        console.log(this.gifs);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  }
+  //     if (response.ok) {
+  //       const result = await response.json();
+  //       this.gifs = result.data;
+  //       console.log(this.gifs);
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
+
+
 
 
 

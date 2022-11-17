@@ -17,4 +17,8 @@ export class SideBarComponent implements OnInit {
     return this.giftSevice.getBusquedas();
   }
 
+
+  recarga(item : string){
+    this.giftSevice.peticion(item);
+  }
 }

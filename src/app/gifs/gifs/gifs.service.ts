@@ -25,7 +25,7 @@ export class GifsService {
     }
   }
 
-  private API_KEY : string = 'hXOKPK2TYHBfgjrwL60pCjwjgo0G0f45';
+  private api : string = 'hXOKPK2TYHBfgjrwL60pCjwjgo0G0f45';
 
 
   busquedasRealizadas : string[] = [];
@@ -70,7 +70,7 @@ export class GifsService {
 
   peticion(busqueda : string, limite : string = '10'){
     this.loading = true;
-    this.HttpClient.get(`https://api.giphy.com/v1/gifs/search?api_key=${this.API_KEY}&q=${busqueda}&limit=${limite}`)
+    this.HttpClient.get(`https://api.giphy.com/v1/gifs/search?api_key=${this.api}&q=${busqueda}&limit=${limite}`)
     .subscribe((response : any)=>{
         setTimeout(() => {
           this.gifs = response.data;

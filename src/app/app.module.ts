@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GifsModule } from './gifs/gifs/gifs.module';
-import { SharedModule } from './shared/shared/shared.module';
-
-import { HttpClientModule } from '@angular/common/http';
+import { CompartidoModule } from './compartido/compartido.module';
+import { NavbarComponent } from './compartido/navbar/navbar.component';
+import { MainModule } from './main/main.module';
 
 @NgModule({
   declarations: [
@@ -13,9 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    GifsModule,
-    SharedModule,
-    HttpClientModule
+    AppRoutingModule,
+    CompartidoModule,
+    MainModule
   ],
   providers: [],
   bootstrap: [AppComponent]
